@@ -1,3 +1,11 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
+const DatabaseUrl = process.env.DATABASEURL;
 
-mongoose.connect('mongodb://127.0.0.1:27017/RegistrationForm').then(()=>console.log("Database connecteed")).catch((e)=>console.log("Got error ", e));
+try{
+    mongoose.connect(DatabaseUrl);
+    console.log("Connected to database");
+}
+catch(error){
+    console.log("Unable to connect database");
+}
